@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Backbone collections</title>
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/main.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="container">
+    <div class="hero-unit " id="rockets"></div>
+</div>
+
+<script type="text/template" id="viewRockets">
+    <h2>Пользователи</h2>
+    <table class="table table-striped">
+        <thead>
+        <th >Имя</th>
+        <th >Телефон</th>
+        <th >Редактировать</th>
+        <th>Удалить</th>
+        </thead>
+        <tbody class="rocketsList"></tbody>
+        <tr>
+            <td class="name" >
+               <input type="text" value="" id="addUsername" >
+            </td>      
+            <td>
+                 <input type="text" value="" id="addPhone" >
+            </td>
+             <td>
+                <button class="btn btn-success addObject" id="addRow">Добавить</button>
+            </td>
+        </tr>
+    </table>
+    <div id="error" class="error"></div>
+</script>
+
+<!-- блок отображения добавленных пользователей -->
+<script type="text/template" id="viewRocket">
+    <td class="name">
+        <%- name %>
+    </td>
+    <td class="desc">
+       <%- phone %> 
+    </td>
+    <td>
+        <button class="editRow btn btn-success">редактировать</button>
+    </td>
+    <td>
+        <button class="deleteRow btn btn-small btn-danger"><i class="icon-remove icon-white">X</i></button>
+    </td>
+</script>
+
+<!-- блок отображения редактируемой строки -->
+<script type="text/template" id="edit">
+    <td class="name">
+        <input type="text" class="editName" value="<%- name %>">
+    </td>
+    <td class="desc">
+       <input type="text" class="editPhone" value="<%- phone %>">
+    </td>
+    <td>
+        <button class="saveEditRow btn btn-success">Сохранить</button>
+    </td>
+    <td>
+        <button class="deleteRow btn btn-small btn-danger"><i class="icon-remove icon-white">X</i></button>
+    </td>
+   <div class=".currentEdit"><%- error %></div>
+</script>
+
+<!-- блок отображения ошибки -->
+<script type="text/template" id="viewError">
+    <div class="name"  >
+        <%- error %>
+    </div>
+</script>
+
+
+
+
+
+</body>
+<script src="assets/js/jquery.js"></script>
+<script src="assets/js/underscore.js"></script>
+<script src="assets/js/backbone.js"></script>
+<script src="models/ModelRocket.js"></script>
+<script src="models/ModelError.js"></script>
+<script src="views/ViewError.js"></script>
+<script src="views/ViewRocket.js"></script>
+<script src="views/ViewRockets.js"></script>
+<script src="main.js"></script>
+</html>
