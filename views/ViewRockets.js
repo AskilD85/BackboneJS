@@ -9,30 +9,12 @@ var RocketsView = Backbone.View.extend({
     initialize: function() {
         this.template = _.template($('#viewRockets').html());
         this.$el.html(this.template());
-        this.coll = new RocketsCollection(
-          
-        );
-
-        
-
-
+        this.coll = new RocketsCollection();
         this.myModel = new RocketModel();
         this.Error = new ModelError(); 
         this.listenTo(this.coll, "all", this.render);
         this.listenTo(this.coll, "add", this.addOne);
-        this.fill();
-    },
-
-    
-    fill: function () {
-        console.log(users.toJSON())
-        //console.log(this.coll.set(users));
-        var view = _.template(document.getElementById('viewRocket').innerHTML)(users.toJSON());
-        this.$el.html(view);
-
-        //$(this.el).html(this.templates[state](this.model.toJSON()));
-
-        return this.$el;
+        this.coll.set(users.toJSON())
     },
 
     addObject: function() {
@@ -77,7 +59,6 @@ var RocketsView = Backbone.View.extend({
     },
 
     addOne: function(model) {
-        console.log(1, model)
         var view = new RocketView({ model: model });
         this.$('.rocketsList').append(view.render());
     },
@@ -89,11 +70,12 @@ var RocketsView = Backbone.View.extend({
         this.$('#error').html(view.render());
     }
 });
-
-var users = new RocketModel(
+// начальные значения
+var users = new RocketsCollection(
     [
-        { name: "Саша", phone: 555555555 },
-        { name: "Юля", phone: 66666666 },
-        { name: "Надя", phone: 77777777  }
+        { name: "Саша", phone: '555555555' },
+        { name: "Юля", phone: '666666666' },
+        { name: "Маша", phone: '777777777' },
+        { name: "Петя", phone: '00000000' }
     ]
 )

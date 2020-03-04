@@ -19,11 +19,9 @@ var RocketModel = Backbone.Model.extend({
         */
         var regPhone = /^((\+*\d)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/;
         if (name != undefined && name.length === 0) {
-            console.log('Имя не должно быть пустым')
             return 'Имя не должно быть пустым';
         }
         if (!regPhone.test(phone)) {
-            console.log('Проверьте номер телефона')
             return 'Проверьте номер телефона';
         }
     }

@@ -13,11 +13,9 @@ var ViewError = Backbone.View.extend({
     },
 
     render: function () {
-        console.log('render', this.model.toJSON() )
         this.model.destroy();
         var view = this.template(this.model.toJSON());
         this.$el.html(view);
-        console.log('render', this.model.toJSON())
         return this.$el;
     },
 

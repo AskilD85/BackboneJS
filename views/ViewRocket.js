@@ -28,6 +28,10 @@ var RocketView = Backbone.View.extend({
     render: function () {
         
         var state = this.model.get('state');
+        if (!state) {
+            state = 'users'
+        }
+        console.log(1, this.model.toJSON())
         var view = this.templates[state](this.model.toJSON());
         this.$el.html(view);
 
